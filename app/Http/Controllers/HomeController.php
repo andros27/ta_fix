@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use app\User;
 use app\Kategori;
 use App\Supplier;
+use App\Barang;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-         $user = User::all();
+        $user = User::all();
         $supplier = Supplier::all();
-        return view('Master.main', compact('user', 'supplier'));
+        $barang = Barang::all();
+        return view('Master.main', compact('user', 'supplier', 'barang'));
     }
 }

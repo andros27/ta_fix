@@ -27,7 +27,7 @@
         <div class="box-body">
           <form method="post" id="form-barang">
             {{ csrf_field() }}
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive">
               <thead>
                 <tr>
                   <th align="center"><input type="checkbox" value="1" id="select-all"></th>
@@ -164,6 +164,8 @@ function editForm(id){
        $('#nama_barang').val(data.nama_barang);
        $('#merk').val(data.merk);
        $('#kategori').val(data.id_kategori);
+       $('#batas1').val(data.wajib_beli);
+       $('#batas2').val(data.batas_habis);
        $('#qty').val(data.qty);
        $('#satuan').val(data.id_satuan);
        $('#hargaBeli').val(data.harga_beli);

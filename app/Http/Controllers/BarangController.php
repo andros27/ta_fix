@@ -7,6 +7,7 @@ use App\Barang;
 use App\Kategori;
 use App\Satuan;
 use DataTables;
+use App\AutoNumber;
 
 class BarangController extends Controller
 {
@@ -18,18 +19,11 @@ class BarangController extends Controller
 
     public function getNewInvoiceNo()
     {
-        $prefix = date('dm');
-
-        $lastTransaction = Barang::orderBy('kode_barang', 'desc')->first();
-
-        if (!is_null($lastTransaction)) {
-            $lastInvoiceNo = $lastTransaction->kode_barang;
-            if (substr($lastInvoiceNo, 0, 4) == $prefix) {
-                return ++$lastInvoiceNo;
-            }
-        }
-
-        return $prefix.'0001';
+        $table="barang";
+        $primary="kode_barang";
+        $prefix="BRG-";
+        $kodeBarang=Autonumber::autonumber($table,$primary,$prefix);
+        echo json_encode($kodeBarang);
     }
 
     public function index()
@@ -97,6 +91,8 @@ class BarangController extends Controller
             $tambah->id_kategori = $request['kategori'];
             $tambah->merk = $request['merk'];
             $tambah->qty = $request['qty'];
+            $tambah->wajib_beli = $request['batas1'];
+            $tambah->batas_habis = $request['batas2'];
             $tambah->id_satuan = $request['satuan'];
             $tambah->harga_beli = $request['harga_beli'];
             $tambah->harga_jual = $request['harga_jual'];

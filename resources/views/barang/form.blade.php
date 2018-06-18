@@ -47,6 +47,22 @@
 					</div>
 
 					<div class="form-group">
+						<label for="nama" class="col-md-3 control-label">Batas 1</label>
+						<div class="col-md-6">
+							<input id="batas1" type="text" name="batas1" autofocus="autofocus" placeholder="Qty" class="form-control" maxlength="4" required="required" onkeypress="return hanyaAngka(event)">
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="nama" class="col-md-3 control-label">Batas 2</label>
+						<div class="col-md-6">
+							<input id="batas2" type="text" name="batas2" autofocus="autofocus" placeholder="Qty" class="form-control" maxlength="4" required="required" onkeypress="return hanyaAngka(event)">
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+
+					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Qty</label>
 						<div class="col-md-6">
 							<input id="qty" type="text" name="qty" autofocus="autofocus" placeholder="Qty" class="form-control" maxlength="4" required="required" onkeypress="return hanyaAngka(event)">

@@ -32,12 +32,12 @@
                 <tr>
                   <th align="center"><input type="checkbox" value="1" id="select-all"></th>
                   <th align="center">No</th>
-                  <th align="center">Nama</th>
+                  <th align="center">Nama Supplier</th>
                   <th align="center">No Telp.</th>
                   <th align="center">Alamat Kantor</th>
                   <th align="center">Provinsi</th>
                   <th align="center">Kota</th>
-                  <th align="center">#</th>
+                  <th align="center">Pilihan</th>
                 </tr>
               </thead>
               <tbody>

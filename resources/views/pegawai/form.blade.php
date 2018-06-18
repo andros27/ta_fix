@@ -46,7 +46,7 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">No. Telp</label>
 						<div class="col-md-6">
-							<input id="notelp" type="text" name="no_telp" autofocus="autofocus" placeholder="Ex. 123456789012" class="form-control" maxlength="100" required="required" onkeypress="return hanyaAngka(event)">
+							<input id="notelp" type="text" name="no_telp" autofocus="autofocus" placeholder="Ex. 123456789012" class="form-control" minlength="12" maxlength="12" required="required" onkeypress="return hanyaAngka(event)">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>

@@ -71,5 +71,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('pelanggan/get-kota-list/{id}','PelangganController@ambilDataKota');
 	Route::post('pelanggan/hapus','PelangganController@deleteSelected');
 	Route::resource('pelanggan', 'PelangganController');
+
+	//Bagian Manajemen Pembelian
+	Route::get('pembelian/data', 'PembelianController@listData')->name('pembelian.data');
+	Route::get('pembelian/{id}/tambah', 'PembelianController@create');
+	Route::get('pembelian/{id}/lihat', 'PembelianController@show');
+	Route::resource('pembelian', 'PembelianController');
+
+	//detail pembelian
+	Route::get('detail_pembelian/{id}/data', 'DetailPembelianController@listData')->name('detail_pembelian.data');
+	Route::resource('detail_pembelian', 'DetailPembelianController');
 });
 

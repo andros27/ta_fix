@@ -32,13 +32,13 @@
                 <tr>
                   <th><input type="checkbox" value="1" id="select-all"></th>
                   <th>No</th>
-                  <th>Kode</th>
+                  <th>Kode Pelanggan</th>
                   <th>Nama Pelanggan</th>
                   <th>No Telp.</th>
-                  <th>Alamat</th>
-                  <th>Provinsi</th>
+                  <th>Alamat Pelanggan</th>
                   <th>Kota</th>
-                  <th>#</th>
+                  <th>Provinsi</th>
+                  <th>Pilihan</th>
                 </tr>
               </thead>
               <tbody>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pelanggan;
 use App\Provinsi;
 use App\Kota;
+use App\AutoNumber;
 use PDF;
 
 class PelangganController extends Controller
@@ -24,18 +25,11 @@ class PelangganController extends Controller
 
     public function getNewInvoiceNo()
     {
-        $prefix = date('dm');
-
-        $lastTransaction = Pelanggan::orderBy('kode_pelanggan', 'desc')->first();
-
-        if (!is_null($lastTransaction)) {
-            $lastInvoiceNo = $lastTransaction->kode_pelanggan;
-            if (substr($lastInvoiceNo, 0, 4) == $prefix) {
-                return ++$lastInvoiceNo;
-            }
-        }
-        //return $prefix.'0001';
-        echo json_encode($prefix.'0001');
+        $table="pelanggan";
+        $primary="kode_pelanggan";
+        $prefix="PEL-";
+        $kodeBarang=Autonumber::autonumber($table,$primary,$prefix);
+        echo json_encode($kodeBarang);
     }
 
     //mengambil data kota
@@ -63,8 +57,8 @@ class PelangganController extends Controller
             $row[] = $list->nama;
             $row[] = $list->telp;
             $row[] = $list->alamat;
-            $row[] = $list->nama_provinsi;
             $row[] = $list->nama_kota;
+            $row[] = $list->nama_provinsi;
             $row[] = '<div class="btn-group"> 
                <a onclick="editForm('.$list->id_pelanggan.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                <a onclick="deleteData('.$list->id_pelanggan.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></div>';

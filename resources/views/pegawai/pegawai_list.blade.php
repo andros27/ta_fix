@@ -5,12 +5,12 @@
 <section class="content-header">
   <h1>
     Data Master
-    <small>Lihat Pegawai</small>
+    <small>Penguna</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="{{Route('profile.index')}}">Data master</a></li>
-    <li class="active">Lihat Pegawai</li>
+    <li class="active">Penguna</li>
   </ol>
 </section>
 
@@ -32,7 +32,7 @@
                 <tr>
                   <th align="center"><input type="checkbox" value="1" id="select-all"></th>
                   <th align="center">No</th>
-                  <th align="center">Nama</th>
+                  <th align="center">Nama Pengguna</th>
                   <th align="center">Alamat</th>
                   <th align="center">No Telp.</th>
                   <th align="center">Jabatan</th>
