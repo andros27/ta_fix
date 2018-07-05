@@ -7,6 +7,7 @@ use App\Pembelian;
 use App\DetailPembelian;
 use App\Supplier;
 use App\Produk;
+use App\Barang;
 use Redirect;
 
 
@@ -39,6 +40,7 @@ class PembelianController extends Controller
             $row[] = $list->nama;
             $row[] = $list->total_item;
             $row[] = "Rp. ".format_uang($list->total_harga);
+            $row[] = $list->diskon."%";
             $row[] = "Rp. ".format_uang($list->bayar);
             $row[] = '<div class="btn-group">
                     <a onclick="showDetail('.$list->id_pembelian.')" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -63,13 +65,14 @@ class PembelianController extends Controller
         $pembelian->kode_pembelian = "";
         $pembelian->total_item = 0;
         $pembelian->total_harga = 0;
+        $pembelian->diskon = 0;     
         $pembelian->bayar = 0;
         $pembelian->save();
 
         session(['idpembelian' => $pembelian->id_pembelian]);
         session(['idsupplier' => $id]);
 
-        return Redirect::route('pembelian.detail.index');
+        return Redirect::route('detail_pembelian.index');
     }
 
     /**
@@ -84,6 +87,7 @@ class PembelianController extends Controller
         $pembelian->kode_pembelian = $request['kodepembelian'];
         $pembelian->total_item = $request['totalitem'];
         $pembelian->total_harga = $request['total'];
+        $pembelian->diskon = $request['diskon'];
         $pembelian->bayar = $request['bayar'];
         $pembelian->update();
 
@@ -107,7 +111,7 @@ class PembelianController extends Controller
      */
     public function show($id)
     {
-        $detail = DetailPembelian::leftJoin('barang', 'produk.kode_barang', '=', 'detail_pembelian.kode_barang')->where('id_pembelian', '=', $id)->get();
+        $detail = DetailPembelian::leftJoin('barang', 'barang.kode_barang', '=', 'detail_pembelian.kode_barang')->where('id_pembelian', '=', $id)->get();
 
         $no = 0;
         $data = array();
@@ -168,8 +172,8 @@ class PembelianController extends Controller
 
         foreach ($detail as $data) {
             $barang = Barang::where('kode_barang', '=', $data->kode_barang)->first();
-            $produk->qty -= $data->jumlah;
-            $produk->update();
+            $barang->qty -= $data->jumlah;
+            $barang->update();
             $data->delete(); 
         }
     }

@@ -36,7 +36,7 @@
                     <th align="center">Kategori</th>
                     <th align="center">Merk</th>
                     <th align="center">Stok</th>
-                    <th align="center">Aksi</th>
+                    <th align="center">Pilihan</th>
                   </tr>
                 </thead>
                 <tbody>

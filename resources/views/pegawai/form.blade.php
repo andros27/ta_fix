@@ -56,7 +56,6 @@
 						<div class="col-md-6">
 							<select id="jabatan" name="jabatan" class="form-control">
 								<option>--- Pilih ---</option>
-								<option value="Pemilik">Pemilik</option>
 								<option value="Karyawan">Karyawan</option>
 								<option value="Kasir">Kasir</option>
 							</select>
@@ -158,7 +157,7 @@
 						</div>
 					</div>
 
-				<div class="modal-footer">
+				<div id="tombol" class="modal-footer">
 					<button type="submit" class="btn btn-primary btn-save"><i class="fa fa-floopy-o"></i>Simpan</button>
 					<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
 				</div>

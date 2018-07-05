@@ -40,7 +40,7 @@
                   <th align="center">Satuan</th>
                   <th align="center">Harga Beli</th>
                   <th align="center">Harga Jual</th>
-                  <th align="center">#</th>
+                  <th align="center">Pilihan</th>
                 </tr>
               </thead>
               <tbody>

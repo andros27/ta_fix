@@ -38,7 +38,7 @@ class BarangController extends Controller
     {
         $barang = Barang::leftJoin('kategori', 'kategori.id_kategori', '=', 'barang.id_kategori')
                     ->leftJoin('satuan', 'satuan.id_satuan', '=', 'barang.id_satuan')
-                    ->orderBy('barang.nama_barang','asc')->get();
+                    ->orderBy('barang.kode_barang','asc')->get();
         $no = 0;
         $data = array();
         foreach($barang as $list)

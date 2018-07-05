@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function listData()
     {
-        $user = User::orderBy('name', 'asc')->get();
+        $user = User::where('jabatan', '!=', 'Pemilik')->orderBy('id', 'asc')->get();
         $no = 0;
         $data = array();
         foreach($user as $list)
@@ -45,7 +45,8 @@ class UserController extends Controller
             $row[] = '<div class="btn-group">
                 <a onclick="editForm('.$list->id.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                 <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-            </div>';
+                <a onclick="showDetail('.$list->id.')" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                 </div>';
 
             $data[] = $row;
         }
@@ -102,7 +103,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = User::find($id);
+        echo json_encode($profile);
     }
 
     /**

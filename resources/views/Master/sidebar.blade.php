@@ -29,9 +29,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('profile.index') }}"><i class="fa fa-user"></i> Pegawai</a></li>
+            <li><a href="{{ route('profile.index') }}"><i class="fa fa-user"></i> Pengguna</a></li>
             <li><a href="{{ route('supplier.index') }}"><i class="fa fa-id-card-o"></i> Supplier</a></li>
-            <li><a href="{{ route('pelanggan.index') }}"><i class="fa  fa-users"></i> Pengguna</a></li>
+            <li><a href="{{ route('pelanggan.index') }}"><i class="fa  fa-users"></i> Pelanggan</a></li>
           </ul>
         </li>
 

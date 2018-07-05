@@ -65,7 +65,7 @@
 					</div>
 				</div>
 
-				<div class="modal-footer">
+				<div class="modal-footer" id="tombol">
 					<button type="submit" class="btn btn-primary btn-save"><i class="fa fa-floopy-o"></i>Simpan</button>
 					<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
 				</div>

@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	//detail pembelian
 	Route::get('detail_pembelian/{id}/data', 'DetailPembelianController@listData')->name('detail_pembelian.data');
+	Route::get('detail_pembelian/loadform/{diskon}/{total}', 'DetailPembelianController@loadForm');
 	Route::resource('detail_pembelian', 'DetailPembelianController');
 });
 

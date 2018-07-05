@@ -52,7 +52,9 @@ class SupplierController extends Controller
             $row[] = $list->nama_kota;
             $row[] = '<div class="btn-group"> 
                <a onclick="editForm('.$list->id_supplier.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-               <a onclick="deleteData('.$list->id_supplier.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></div>';
+               <a onclick="deleteData('.$list->id_supplier.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+               <a onclick="showDetail('.$list->id_supplier.')" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                 </div>';
 
             $data[] = $row;   
         }
@@ -95,7 +97,8 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-    
+        $supplier = Supplier::find($id);
+        echo json_encode($supplier);
     }
 
     /**

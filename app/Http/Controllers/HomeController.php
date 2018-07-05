@@ -7,6 +7,7 @@ use app\User;
 use app\Kategori;
 use App\Supplier;
 use App\Barang;
+use App\Pelanggan;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $user = User::all();
         $supplier = Supplier::all();
         $barang = Barang::all();
-        return view('Master.main', compact('user', 'supplier', 'barang'));
+        $pelanggan = Pelanggan::all();
+        return view('Master.main', compact('user', 'supplier', 'barang', 'pelanggan'));
     }
 }

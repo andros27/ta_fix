@@ -106,6 +106,15 @@ function addForm(){
    $('#modal-form').modal('show');
    $('#modal-form form')[0].reset();
    $('.modal-title').text('Tambah Supplier');
+
+
+    $('#id').removeAttr("disabled");
+    $('#nama').removeAttr("disabled");
+    $('#alamat').removeAttr("disabled");
+    $('#noTelp').removeAttr("disabled");
+    $('#provinsi').removeAttr("disabled");
+    $('#kota').removeAttr("disabled");
+    $('#tombol').removeAttr("hidden");
 }
 
 function editForm(id){
@@ -120,12 +129,13 @@ function editForm(id){
        $('#modal-form').modal('show');
        $('.modal-title').text('Edit Supplier');
 
-       $('#id').val(data.id_supplier);
-       $('#nama').val(data.nama);
-       $('#alamat').val(data.alamat_kantor);
-       $('#noTelp').val(data.no_telp);
-       $('#provinsi').val(data.provinsi_id);
-       $('#kota').val(data.kota_id);
+       $('#id').val(data.id_supplier).removeAttr("disabled");
+       $('#nama').val(data.nama).removeAttr("disabled");
+       $('#alamat').val(data.alamat_kantor).removeAttr("disabled");
+       $('#noTelp').val(data.no_telp).removeAttr("disabled");
+       $('#provinsi').val(data.provinsi_id).removeAttr("disabled");
+       $('#kota').val(data.kota_id).removeAttr("disabled");
+       $('#tombol').removeAttr("hidden");
      },
      error : function(){
        swal({
@@ -213,6 +223,38 @@ $('#provinsi').on('change', function(){
     $('#kota').empty();
   }
 });
+
+function showDetail(id){
+  $('input[name=_method]').val('PATCH');
+  $('#modal-form form')[0].reset();
+  $.ajax({
+    url : "supplier/"+id,
+
+    type : "GET",
+    dataType : "JSON",
+    success : function(data){
+      $('#modal-form').modal('show');
+      $('.modal-title').text('Lihat Supplier');
+
+      $('#id').val(data.id_supplier).attr({disabled : "disabled"});
+       $('#nama').val(data.nama).attr({disabled : "disabled"});
+       $('#alamat').val(data.alamat_kantor).attr({disabled : "disabled"});
+       $('#noTelp').val(data.no_telp).attr({disabled : "disabled"});
+       $('#provinsi').val(data.provinsi_id).attr({disabled : "disabled"});
+       $('#kota').val(data.kota_id).attr({disabled : "disabled"});
+      $('#tombol').attr({hidden : "hidden"});
+
+    },
+    error : function(){
+      swal({
+            title: 'Oops...',
+            text: 'Tidak dapat menampilkan data!',
+            type: 'error',
+            timer: '1500'
+          })
+    }
+  });
+}
 
 function deleteAll(){
   if($('input:checked').length < 1){

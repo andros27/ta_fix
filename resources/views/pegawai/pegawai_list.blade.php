@@ -33,12 +33,12 @@
                   <th align="center"><input type="checkbox" value="1" id="select-all"></th>
                   <th align="center">No</th>
                   <th align="center">Nama Pengguna</th>
-                  <th align="center">Alamat</th>
+                  <th align="center">Alamat Pengguna</th>
                   <th align="center">No Telp.</th>
                   <th align="center">Jabatan</th>
                   <th align="center">E-mail</th>
                   <th align="center">Gambar</th>
-                  <th align="center">#</th>
+                  <th align="center">Pilihan</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,6 +52,7 @@
 </section>
 
 @include('pegawai.form')
+
 
 @endsection
 @section('script')
@@ -83,7 +84,7 @@ function hanyaAngka(evt) {
     $('input[name = method]').val('POST');
     $('#modal-form').modal('show');
     $('#modal-form form')[0].reset();
-    $('.modal-title').text('Tambah Pegawai');
+    $('.modal-title').text('Tambah Pengguna');
 
     $('#modal-form form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
@@ -129,15 +130,17 @@ function editForm(id)
     dataType : "JSON",
     success : function(data){
       $('#modal-form2').modal('show');
-      $('.modal-title').text('Edit Pegawai');
+      $('.modal-title').text('Edit Pengguna');
 
       $('#id').val(data.id);
-      $('#nama2').val(data.name);
-      $('#alamat2').val(data.alamat);
-      $('#username2').val(data.username);
-      $('#email2').val(data.email);
-      $('#notelp2').val(data.no_telp);
-      $('#jabatan2').val(data.jabatan);
+      $('#nama2').val(data.name).removeAttr("disabled");
+      $('#alamat2').val(data.alamat).removeAttr("disabled");
+      $('#username2').val(data.username).removeAttr("disabled");
+      $('#email2').val(data.email).removeAttr("disabled");
+      $('#notelp2').val(data.no_telp).removeAttr("disabled");
+      $('#jabatan2').val(data.jabatan).removeAttr("disabled");
+      $('#tombol').removeAttr("hidden");
+      
 
     },
     error : function(){
@@ -149,6 +152,8 @@ function editForm(id)
           })
     }
   });
+
+
 
   $('#modal-form2 form').validator().on('submit', function(e){
     if(!e.isDefaultPrevented()){
@@ -179,6 +184,39 @@ function editForm(id)
        return false;
    }
  });
+}
+
+function showDetail(id){
+  $('input[name=_method]').val('PATCH');
+  $('#modal-form2 form')[0].reset();
+  $.ajax({
+    url : "profile/"+id,
+
+    type : "GET",
+    dataType : "JSON",
+    success : function(data){
+      $('#modal-form2').modal('show');
+      $('.modal-title').text('Lihat Pengguna');
+
+      $('#id').val(data.id);
+      $('#nama2').val(data.name).attr({disabled : "disabled"});
+      $('#alamat2').val(data.alamat).attr({disabled : "disabled"});
+      $('#username2').val(data.username).attr({disabled : "disabled"});
+      $('#email2').val(data.email).attr({disabled : "disabled"});
+      $('#notelp2').val(data.no_telp).attr({disabled : "disabled"});
+      $('#jabatan2').val(data.jabatan).attr({disabled : "disabled"});
+      $('#tombol').attr({hidden : "hidden"});
+
+    },
+    error : function(){
+      swal({
+            title: 'Oops...',
+            text: 'Tidak dapat menampilkan data!',
+            type: 'error',
+            timer: '1500'
+          })
+    }
+  });
 }
 
 function deleteData(id){

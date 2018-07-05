@@ -1,5 +1,5 @@
 @extends('Master.master')
-@section('title')Pegawai @endsection
+@section('title')Pembelian @endsection
 @section('main')
 
 <section class="content-header">
@@ -34,6 +34,7 @@
 								<th>Supplier</th>
 								<th>Total Item</th>
 								<th>Total Harga</th>
+								<th>Diskon</th>
 								<th>Total Bayar</th>
 								<th width="100">Pilihan</th>
 							</tr>
@@ -79,8 +80,8 @@
 	function showDetail(id){
 		$('#modal-detail').modal('show');
 
-		table.ajax.url("pembelian/"+id+"/lihat");
-		table.ajax.reload();
+		table1.ajax.url("pembelian/"+id+"/lihat");
+		table1.ajax.reload();
 	}
 
 	function deleteData(id){

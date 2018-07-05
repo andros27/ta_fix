@@ -104,7 +104,14 @@ $(function(){
 function addForm(){
    save_method = "add";
    $('input[name=_method]').val('POST');
-   $('#modal-form form')[0].reset();            
+   $('#modal-form form')[0].reset();   
+   $('#id').removeAttr("disabled");
+   $('#nama').removeAttr("disabled");
+   $('#alamat').removeAttr("disabled");
+   $('#noTelp').removeAttr("disabled");
+   $('#provinsi').removeAttr("disabled");
+   $('#kota').removeAttr("disabled");
+   $('#tombol').removeAttr("hidden");         
    $.ajax({
     url : "pelanggan/no",
     type : "GET",
@@ -127,15 +134,16 @@ function editForm(id){
      dataType : "JSON",
      success : function(data){
        $('#modal-form').modal('show');
-       $('.modal-title').text('Edit Supplier');
+       $('.modal-title').text('Edit Pelanggan');
 
-       $('#id').val(data.id_pelanggan);
-       $('#kode').val(data.kode_pelanggan);
-       $('#nama').val(data.nama);
-       $('#alamat').val(data.alamat);
-       $('#noTelp').val(data.telp);
-       $('#provinsi').val(data.provinsi_id);
-       $('#kota').val(data.kota_id);
+       $('#id').val(data.id_pelanggan).removeAttr("disabled");
+       $('#kode').val(data.kode_pelanggan).removeAttr("disabled");
+       $('#nama').val(data.nama).removeAttr("disabled");
+       $('#alamat').val(data.alamat).removeAttr("disabled");
+       $('#noTelp').val(data.telp).removeAttr("disabled");
+       $('#provinsi').val(data.provinsi_id).removeAttr("disabled");
+       $('#kota').val(data.kota_id).removeAttr("disabled");
+       $('#tombol').removeAttr("hidden");
      },
      error : function(){
        swal({
@@ -147,6 +155,40 @@ function editForm(id){
      }
    });
 }
+
+function showDetail(id){
+  $('input[name=_method]').val('PATCH');
+  $('#modal-form form')[0].reset();
+  $.ajax({
+    url : "pelanggan/"+id,
+
+    type : "GET",
+    dataType : "JSON",
+    success : function(data){
+      $('#modal-form').modal('show');
+      $('.modal-title').text('Lihat Pelanggan');
+
+      $('#id').val(data.id_pelanggan).attr({disabled : "disabled"});
+       $('#kode').val(data.kode_pelanggan).attr({disabled : "disabled"});
+       $('#nama').val(data.nama).attr({disabled : "disabled"});
+       $('#alamat').val(data.alamat).attr({disabled : "disabled"});
+       $('#noTelp').val(data.telp).attr({disabled : "disabled"});
+       $('#provinsi').val(data.provinsi_id).attr({disabled : "disabled"});
+       $('#kota').val(data.kota_id).attr({disabled : "disabled"});
+      $('#tombol').attr({hidden : "hidden"});
+
+    },
+    error : function(){
+      swal({
+            title: 'Oops...',
+            text: 'Tidak dapat menampilkan data!',
+            type: 'error',
+            timer: '1500'
+          })
+    }
+  });
+}
+
 
  //centang semua checkbox ketika dicentang dengan id #select-all
   $('#select-all').click(function(){

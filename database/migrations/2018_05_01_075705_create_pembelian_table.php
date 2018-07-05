@@ -18,6 +18,7 @@ class CreatePembelianTable extends Migration
             $table->string('kode_pembelian')->nullable();
             $table->integer('id_supplier')->unsigned();
             $table->integer('total_item')->unsigned();
+            $table->integer('diskon')->unsigned();    
             $table->bigInteger('total_harga')->unsigned();
             $table->bigInteger('bayar')->unsigned();
             $table->timestamps();
